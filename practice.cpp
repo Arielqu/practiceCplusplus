@@ -3,8 +3,8 @@
 using namespace std;
 int main()
 {
-    cout << "check string method.\n" ; 
+    cout << "Start of the practice. Great work.\n" ; 
     stringMethods();
-    cout << "hello world.\n" ; 
+    cout << "End of the practice. Have a good day.\n" ; 
     return 0;
 }
