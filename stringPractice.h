@@ -49,6 +49,14 @@ void stringMethods()
     //just print like a string 
     cout << "Finally, the str print out is: " << strSTLString << endl;
 
+    /*
+    string concatenation 
+    */
+   string strSample1("Hello");
+   string strSample2(" world");
+   //concatenate 
+   strSample1 += strSample2;
+   cout << "The concatenated string is: " << strSample1 << endl;
 
 
     cout << "End of the string method. \n\n";
