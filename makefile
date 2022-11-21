@@ -2,9 +2,9 @@
 #destination: source
 practice: practice.o 
 #how we get from the source to the destination
-	g++ practice.o -o practice
+	g++ -Wc++11-extensions practice.o -o  practice 
 #how the smaller target generated?
 practice.o: practice.cpp
-	g++ -c practice.cpp
+	g++ -Wc++11-extensions -c   practice.cpp
 clean:
 	rm *.o practice
