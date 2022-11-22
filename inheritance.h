@@ -25,7 +25,8 @@ class Mammal
 {
 public:
     // constructors
-    Mammal() : itsAge(2), itsWeight(5) {cout << "Mammal constructor.\n";}
+    Mammal();
+    Mammal (int age);
     ~Mammal() {cout << "Mammal destructor.\n";}
 
     // accessors
@@ -43,10 +44,26 @@ protected:
     int itsWeight;
 };
 
+Mammal:: Mammal()
+:itsAge(1), 
+itsWeight(5){
+    cout << "Mammal constructor.\n";
+}
+
+Mammal::Mammal(int age)
+:itsAge(age),
+itsWeight(5){
+    cout << "Mammal int constructor.\n";
+}
+
 class Dog : public Mammal
 {
 public:
-    Dog() : itsBreed(GOLDEN) {cout << "Dog constructor.\n";}
+    Dog();
+    Dog(int age);
+    Dog(int age, int weight);
+    Dog (int age, BREED breed);
+    Dog (int age, int weight, BREED breed);
     ~Dog() {cout << "Dog  destructor.\n";}
 
     // Accessor
@@ -61,12 +78,47 @@ private:
     BREED itsBreed;
 };
 
+Dog::Dog():
+Mammal(),
+itsBreed(GOLDEN){
+    cout << "Dog constructor.\n";
+}
+
+Dog::Dog(int age):
+Mammal(age),
+itsBreed(GOLDEN){
+cout << "Dog int constructor.\n";
+}
+
+Dog::Dog(int age, int weight):
+Mammal(age),
+itsBreed(GOLDEN){
+    itsWeight = weight;
+    cout << "Dog (int,int) constructor.\n";
+}
+
+Dog:: Dog(int age, BREED breed):
+Mammal(age),
+itsBreed(breed){
+    cout << "Dog (int, BREED) constructor.\n";
+}
+
+Dog::Dog(int age, int weight, BREED breed):
+Mammal(age),
+itsBreed(breed){
+    itsWeight = weight;
+    cout << 'Dog (int,int, BREED) constructor.\n';
+}
 void testInheritance()
 {
     Dog Fido;
-    Fido.Speak();
-    Fido.WagTail();
-    cout << "Fido is " << Fido.GetAge() << " years old. \n";
+   Dog rover(5);
+   Dog buster(6,8);
+   Dog yorkie(3, GOLDEN);
+   Dog dobbie(4,20, DOBERMAN);
+   Fido.Speak();
+   rover.WagTail();
+   cout << "Dobbie weight: " << dobbie.GetWieght() << endl;
 }
 
 #endif
