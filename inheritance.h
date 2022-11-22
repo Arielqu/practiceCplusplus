@@ -27,7 +27,7 @@ public:
     // constructors
     Mammal();
     Mammal(int age);
-    ~Mammal() { cout << "Mammal destructor.\n"; }
+    virtual ~Mammal() { cout << "Mammal destructor.\n"; }
 
     // accessors
     int GetAge() const { return itsAge; }
@@ -36,7 +36,7 @@ public:
     int SetWeight(int weight) { itsWeight = weight; }
 
     // other methods
-    void Speak() const { cout << "Mammal sound. \n"; }
+    virtual void Speak() const { cout << "Mammal sound. \n"; }
     void Sleep() const { cout << "shh. I am sleeping.\n"; }
     void Move() const {cout << "Mammal move one step. \n";}
     void Move(int distance) const {cout << "Mammal move " << distance << " steps.\n";}
@@ -68,7 +68,7 @@ public:
     Dog(int age, int weight);
     Dog(int age, BREED breed);
     Dog(int age, int weight, BREED breed);
-    ~Dog() { cout << "Dog  destructor.\n"; }
+    virtual ~Dog() { cout << "Dog  destructor.\n"; } //also virtual destructor here 
 
     // Accessor
     BREED GetBreed() const { return itsBreed; }
@@ -82,6 +82,17 @@ public:
 
 private:
     BREED itsBreed;
+};
+
+class Cat: public Mammal{
+    public:
+    void Speak() const {cout << "Meow.\n";}
+
+};
+
+class Horse: public Mammal{
+public: 
+void Speak() const {cout << "Winnie.\n";}
 };
 
 Dog::Dog() : Mammal(),
@@ -125,18 +136,51 @@ void testInheritance()
     // Fido.Speak();
     // rover.WagTail();
     // cout << "Dobbie weight: " << dobbie.GetWieght() << endl;
-    Mammal bigAnimal;
-    Dog Fido;
+    // Mammal bigAnimal;
+    // Dog Fido;
     // bigAnimal.Speak();
     // Fido.Speak();
     
     //* hide overload functions
     // Fido.Move(); build error
     // call the base
-    Fido.Mammal::Move();
-    Fido.Move(3);
-    bigAnimal.Move();
-    bigAnimal.Move(2);
+    // Fido.Mammal::Move();
+    // Fido.Move(3);
+    // bigAnimal.Move();
+    // bigAnimal.Move(2);
+
+    //virtual methods: 
+    /*
+    Mammal* pMammal = new Dog;
+    create a dog object on the heap and returns a pointer to that object, which is assigns to a ponter to mammal. 
+    The essence of polymorphism: can create many types of windows, and give them each a virtual draw()
+    by creating a pointer to a window, can call draw() without regard to the actual runtime type of the object pointed to. 
+    the correct draw() fucntion will be called
+    */
+
+//    Mammal *pDog = new Dog;
+//    Mammal *pCat = new Cat;
+//    Mammal *pHorse = new Horse;
+//    pDog->Speak();
+//    pCat->Speak();
+//    pHorse->Speak();
+    Mammal* theArray[5];
+    Mammal* ptr;
+    int choice;
+    for (int i=0; i<5; i++){
+        cout << "1 dog, 2 cat, 3 horse: " ;
+        cin >> choice;
+        switch (choice){
+            case 1: ptr = new Dog; break;
+            case 2: ptr = new Cat; break;
+            case 3: ptr = new Horse; break;
+            default: ptr = new Mammal; break;
+        }
+        theArray[i] = ptr;
+    }
+    for (int i=0; i<5; i++){
+        theArray[i]->Speak();
+    }
 
 }
 
