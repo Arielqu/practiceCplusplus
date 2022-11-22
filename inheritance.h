@@ -132,6 +132,8 @@ void testInheritance()
     
     //* hide overload functions
     // Fido.Move(); build error
+    // call the base
+    Fido.Mammal::Move();
     Fido.Move(3);
     bigAnimal.Move();
     bigAnimal.Move(2);
