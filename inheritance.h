@@ -148,7 +148,7 @@ class ElectricMotor{
         cout << "Motor running at constant speed.\n";
     }
 };
-class Fan: public ElectricMotor{
+class Fan: private ElectricMotor{
     public: 
     Fan() {}
     ~Fan(){}
@@ -239,7 +239,7 @@ void testInheritance()
    Fan mFan;
    mFan.StartFan();
    mFan.StopFan();
-   mFan.StartMotor();
+   //mFan.StartMotor();
 
 
 }

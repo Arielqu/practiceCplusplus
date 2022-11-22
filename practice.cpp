@@ -4,6 +4,7 @@
 #include "exceptionHandling.h"
 #include "classAndObjects.h"
 #include "inheritance.h"
+#include "streams.h"
 #include <iostream>
 using namespace std;
 int main()
@@ -13,7 +14,8 @@ int main()
     // setMethods();
     // mapMethods();
     // testException();
-    testInheritance();
+    // testInheritance();
+    testStreams();
 
     cout << "\n\n********************\nEnd of the practice. Have a good day.\n" ; 
     return 0;
