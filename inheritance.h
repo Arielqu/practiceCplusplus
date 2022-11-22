@@ -38,6 +38,8 @@ public:
     // other methods
     void Speak() const { cout << "Mammal sound. \n"; }
     void Sleep() const { cout << "shh. I am sleeping.\n"; }
+    void Move() const {cout << "Mammal move one step. \n";}
+    void Move(int distance) const {cout << "Mammal move " << distance << " steps.\n";}
 
 protected:
     int itsAge;
@@ -76,6 +78,7 @@ public:
     void Speak() const {cout << "Woof.\n";}
     void WagTail() const { cout << "Tail wagging. \n"; }
     void BegForFood() const { cout << "Begging for food. \n"; }
+    void Move(int distance) const {cout << "Dog move " << distance << endl;}
 
 private:
     BREED itsBreed;
@@ -124,9 +127,15 @@ void testInheritance()
     // cout << "Dobbie weight: " << dobbie.GetWieght() << endl;
     Mammal bigAnimal;
     Dog Fido;
-    bigAnimal.Speak();
-    Fido.Speak();
+    // bigAnimal.Speak();
+    // Fido.Speak();
     
+    //* hide overload functions
+    // Fido.Move(); build error
+    Fido.Move(3);
+    bigAnimal.Move();
+    bigAnimal.Move(2);
+
 }
 
 #endif
