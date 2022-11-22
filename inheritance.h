@@ -182,6 +182,14 @@ void testInheritance()
         theArray[i]->Speak();
     }
 
+    /*
+    slicing: the virtual funciton magic operates only on a pointer and references. 
+    passing an object by value does not enable the virtual funcitons to be invoked. 
+    if pass by value, the compiler slices down the dog object to just the Mammal part, dog pieces are gone. 
+    The effect is called slicing because the dog portiohns of your object were sliced off when convering to just a mammal
+
+    */
+
 }
 
 #endif
