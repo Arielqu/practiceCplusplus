@@ -38,8 +38,8 @@ public:
     // other methods
     virtual void Speak() const { cout << "Mammal sound. \n"; }
     void Sleep() const { cout << "shh. I am sleeping.\n"; }
-    void Move() const {cout << "Mammal move one step. \n";}
-    void Move(int distance) const {cout << "Mammal move " << distance << " steps.\n";}
+    void Move() const { cout << "Mammal move one step. \n"; }
+    void Move(int distance) const { cout << "Mammal move " << distance << " steps.\n"; }
 
 protected:
     int itsAge;
@@ -68,31 +68,32 @@ public:
     Dog(int age, int weight);
     Dog(int age, BREED breed);
     Dog(int age, int weight, BREED breed);
-    virtual ~Dog() { cout << "Dog  destructor.\n"; } //also virtual destructor here 
+    virtual ~Dog() { cout << "Dog  destructor.\n"; } // also virtual destructor here
 
     // Accessor
     BREED GetBreed() const { return itsBreed; }
     void SetBreed(BREED breed) { itsBreed = breed; }
 
     // Other methods
-    void Speak() const {cout << "Woof.\n";}
+    void Speak() const { cout << "Woof.\n"; }
     void WagTail() const { cout << "Tail wagging. \n"; }
     void BegForFood() const { cout << "Begging for food. \n"; }
-    void Move(int distance) const {cout << "Dog move " << distance << endl;}
+    void Move(int distance) const { cout << "Dog move " << distance << endl; }
 
 private:
     BREED itsBreed;
 };
 
-class Cat: public Mammal{
-    public:
-    virtual void Speak() const {cout << "Meow.\n";}
-
+class Cat : public Mammal
+{
+public:
+    virtual void Speak() const { cout << "Meow.\n"; }
 };
 
-class Horse: public Mammal{
-public: 
-void Speak() const {cout << "Winnie.\n";}
+class Horse : public Mammal
+{
+public:
+    void Speak() const { cout << "Winnie.\n"; }
 };
 
 Dog::Dog() : Mammal(),
@@ -126,6 +127,39 @@ Dog::Dog(int age, int weight, BREED breed) : Mammal(age),
     itsWeight = weight;
     cout << 'Dog (int,int, BREED) constructor.\n';
 }
+
+class ElectricMotor{
+    public:
+    ElectricMotor(){};
+    virtual ~ElectricMotor(){};
+
+    void StartMotor(){
+        Accelerate();
+        Cruise();
+    }
+    void StopMotor(){
+        cout << "Motor stopped.\n";
+    }
+    private:
+    void Accelerate(){
+        cout << "Motor started.\n";
+    }
+    void Cruise(){
+        cout << "Motor running at constant speed.\n";
+    }
+};
+class Fan: public ElectricMotor{
+    public: 
+    Fan() {}
+    ~Fan(){}
+    void StartFan(){
+        StartMotor();
+    }
+    void StopFan(){
+        StopMotor();
+    }
+
+};
 void testInheritance()
 {
     // Dog Fido;
@@ -140,7 +174,7 @@ void testInheritance()
     // Dog Fido;
     // bigAnimal.Speak();
     // Fido.Speak();
-    
+
     //* hide overload functions
     // Fido.Move(); build error
     // call the base
@@ -149,46 +183,64 @@ void testInheritance()
     // bigAnimal.Move();
     // bigAnimal.Move(2);
 
-    //virtual methods: 
+    // virtual methods:
     /*
     Mammal* pMammal = new Dog;
-    create a dog object on the heap and returns a pointer to that object, which is assigns to a ponter to mammal. 
+    create a dog object on the heap and returns a pointer to that object, which is assigns to a ponter to mammal.
     The essence of polymorphism: can create many types of windows, and give them each a virtual draw()
-    by creating a pointer to a window, can call draw() without regard to the actual runtime type of the object pointed to. 
+    by creating a pointer to a window, can call draw() without regard to the actual runtime type of the object pointed to.
     the correct draw() fucntion will be called
     */
 
-//    Mammal *pDog = new Dog;
-//    Mammal *pCat = new Cat;
-//    Mammal *pHorse = new Horse;
-//    pDog->Speak();
-//    pCat->Speak();
-//    pHorse->Speak();
-    Mammal* theArray[5];
-    Mammal* ptr;
-    int choice;
-    for (int i=0; i<5; i++){
-        cout << "1 dog, 2 cat, 3 horse: " ;
-        cin >> choice;
-        switch (choice){
-            case 1: ptr = new Dog; break;
-            case 2: ptr = new Cat; break;
-            case 3: ptr = new Horse; break;
-            default: ptr = new Mammal; break;
-        }
-        theArray[i] = ptr;
-    }
-    for (int i=0; i<5; i++){
-        theArray[i]->Speak();
-    }
+    //    Mammal *pDog = new Dog;
+    //    Mammal *pCat = new Cat;
+    //    Mammal *pHorse = new Horse;
+    //    pDog->Speak();
+    //    pCat->Speak();
+    //    pHorse->Speak();
+    // Mammal *theArray[5];
+    // Mammal *ptr;
+    // int choice;
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     cout << "1 dog, 2 cat, 3 horse: ";
+    //     cin >> choice;
+    //     switch (choice)
+    //     {
+    //     case 1:
+    //         ptr = new Dog;
+    //         break;
+    //     case 2:
+    //         ptr = new Cat;
+    //         break;
+    //     case 3:
+    //         ptr = new Horse;
+    //         break;
+    //     default:
+    //         ptr = new Mammal;
+    //         break;
+    //     }
+    //     theArray[i] = ptr;
+    // }
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     theArray[i]->Speak();
+    // }
 
     /*
-    slicing: the virtual funciton magic operates only on a pointer and references. 
-    passing an object by value does not enable the virtual funcitons to be invoked. 
-    if pass by value, the compiler slices down the dog object to just the Mammal part, dog pieces are gone. 
+    slicing: the virtual funciton magic operates only on a pointer and references.
+    passing an object by value does not enable the virtual funcitons to be invoked.
+    if pass by value, the compiler slices down the dog object to just the Mammal part, dog pieces are gone.
     The effect is called slicing because the dog portiohns of your object were sliced off when convering to just a mammal
 
     */
+
+   //private inheritance
+   Fan mFan;
+   mFan.StartFan();
+   mFan.StopFan();
+   mFan.StartMotor();
+
 
 }
 
