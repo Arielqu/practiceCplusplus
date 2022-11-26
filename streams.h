@@ -50,17 +50,46 @@ void testStreams(){
     // cin.getline(s3,256);
     // cout << "S3: " << s3 <<endl;
 
-    //peek and putback 
-    char p;
-    cout << "Enter a phrase:\n";
-    while (cin.get(p) != 0){
-        if (p =='?'){
-            cin.putback('$');
-        } else
-            cout << p;
-        while (cin.peek() == '#')
-            cin.ignore(1,'#');
-    }
+    // //peek and putback 
+    // char p;
+    // cout << "Enter a phrase:\n";
+    // while (cin.get(p) != 0){
+    //     if (p =='?'){
+    //         cin.putback('$');
+    //     } else
+    //         cout << p;
+    //     while (cin.peek() == '#')
+    //         cin.ignore(1,'#');
+    // }
+
+//     //using put
+//     cout.put('h').put('e').put('l').put('l').put('o');
+
+//     //using write
+//     /*
+//     write(test, size)
+//     */
+//    char testWrite[] = "\nFriend is very important.\n";
+//    int fullLength = strlen(testWrite);
+//    int tooShort = fullLength -4;
+//    int tooLong = fullLength + 4;
+//    cout.write(testWrite, fullLength);
+//    cout.write(testWrite, tooLong);
+//    cout.write(testWrite, tooShort);
+
+    // //maninpulate. flag and formatting 
+    // //cout.width() 
+    // cout << "|";
+    // cout << 123456<< "|\n";
+
+    // cout << "|";
+    // cout.width(5);//too small will not truncate
+    // cout << 123456 << "|\n";
+
+    // cout << "|";
+    // cout.width(10);
+    // cout.fill('*');
+    // cout << oct << left << showbase<< showpoint<< showpos<<  123456 << "|\n\a";
 
 }
 
