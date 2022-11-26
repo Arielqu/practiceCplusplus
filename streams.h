@@ -1,6 +1,7 @@
 #ifndef STREAMS
 #define STREAMS
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 void testStreams(){
@@ -90,6 +91,30 @@ void testStreams(){
     // cout.width(10);
     // cout.fill('*');
     // cout << oct << left << showbase<< showpoint<< showpos<<  123456 << "|\n\a";
+
+    // //open a file, write and then read
+    // char fileName[256];
+    // char buffer[256];
+    // cout << "Enter file name: \n";
+    // cin >> fileName;
+    // //open for writing 
+    // ofstream ofOpen(fileName, ios::app);// append   
+    // ofOpen << "Write to the file.\n";
+    // cout << "Enter content to file:";
+    // cin.ignore(1,'\n');
+    // cin.getline(buffer, 256);
+    // ofOpen << buffer << endl;
+    // ofOpen.close();
+
+    // //reopen for reading 
+    // ifstream ifOpen(fileName);
+    // cout << "Read from the file: \n";
+    // char ch;
+    // while (ifOpen.get(ch)){
+    //     cout << ch;
+    // }
+    // cout << "\nDone Reading from file;\n";
+    // ifOpen.close();
 
 }
 
