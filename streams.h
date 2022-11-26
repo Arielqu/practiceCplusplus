@@ -35,20 +35,32 @@ void testStreams(){
 
     //get strings from standard input
     // get (pCharArray, StreamSize, TermChar)
-    char s1[256], s2[256], s3[256];
-    cout << "Enter string 1: " ;
-    cin.getline(s1, 256);
-    cout << "S1: " << s1 << endl;
+    // char s1[256], s2[256], s3[256];
+    // cout << "Enter string 1: " ;
+    // cin.getline(s1, 256);
+    // cout << "S1: " << s1 << endl;
 
-    cout << "Enter string 2: ";
-    cin.get(s2,256);
-    cout << "S2: " <<s2 << endl;
+    // cout << "Enter string 2: ";
+    // cin.get(s2,256);
+    // cout << "S2: " <<s2 << endl;
 
-    cin.ignore(255, '\n');
+    // cin.ignore(255, '\n');
 
-    cout << "Enter string 3: ";
-    cin.getline(s3,256);
-    cout << "S3: " << s3 <<endl;
+    // cout << "Enter string 3: ";
+    // cin.getline(s3,256);
+    // cout << "S3: " << s3 <<endl;
+
+    //peek and putback 
+    char p;
+    cout << "Enter a phrase:\n";
+    while (cin.get(p) != 0){
+        if (p =='?'){
+            cin.putback('$');
+        } else
+            cout << p;
+        while (cin.peek() == '#')
+            cin.ignore(1,'#');
+    }
 
 }
 
